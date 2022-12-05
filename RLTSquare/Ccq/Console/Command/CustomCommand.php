@@ -76,6 +76,7 @@ class CustomCommand extends Command
         try {
             if (!empty($var1) && !empty($var2)) {
                 $arr = $this->json->serialize(["var1" => $var1, "var2" => $var2]);
+                $this->logger->info("$var1 $var2 added to rltsquare_hello_world_queue");
                 $this->publisher->publish('rltsquare.hello.world.queue.topic', $arr);
                 $output->writeln("$var1 $var2 added to rltsquare_hello_world_queue");
             }
